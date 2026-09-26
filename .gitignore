@@ -1,0 +1,12 @@
+# Never commit secrets or personal files
+*password*
+*.env
+*.key
+*.pem
+id_*
+.htpasswd
+*.old.txt
+Caddyfile
+Caddyfile.*
+Thumbs.db
+.DS_Store
