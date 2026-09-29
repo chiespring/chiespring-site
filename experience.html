@@ -43,7 +43,8 @@
 <style>
 .lang { display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 12px; letter-spacing: .1em; color: #4A3F49; align-items: center; }
 .lang a { color: inherit; text-decoration: none; }
-.lang a[aria-current] { border-bottom: 1px solid currentColor; }
+.lang a[aria-current] { border-bottom: none; font-weight: 600; }
+.lang a:not([aria-current]) { border-bottom: 1px solid currentColor; }
 .lang-en [style*="flex: 0 0 64px"], .lang-ru [style*="flex: 0 0 64px"] { flex: 0 0 auto !important; }
 .lang-en .lk, .lang-ru .lk { white-space: normal; border-radius: 18px; }
 .lang-ru [style*="Zen Maru Gothic"], .lang-ru h3 { font-family: 'M PLUS Rounded 1c', 'Noto Sans', sans-serif !important; }
