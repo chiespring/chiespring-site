@@ -36,6 +36,15 @@
     a { color: inherit; text-decoration: none; }
     .card { padding: 26px; background: #FFFFFF; border: 1px solid #EEE4ED; border-radius: 16px; }
     .card:hover { border-color: #613767; }
+    .card-off { padding: 26px; background: #FAF8FA; border: 1px dashed #D9CDD8; border-radius: 16px; }
+    .cgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .status { display: inline-block; font-size: 11px; line-height: 1; padding: 5px 9px; border-radius: 999px; letter-spacing: .02em; white-space: nowrap; }
+    .st-pilot { background: #FCEDE9; color: #A8321B; }
+    .st-coming { background: #F3F0F3; color: #6B5F6C; }
+    .newstrip { display: flex; align-items: center; gap: 18px 22px; flex-wrap: wrap; padding: 16px 22px; background: #F5EFF4; border-radius: 14px; margin: 0 0 40px; }
+    .newstrip:hover { background: #EEE4ED; }
+    @media (max-width: 900px) { .cgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .cgrid { grid-template-columns: minmax(0, 1fr); } .card, .card-off { padding: 22px; } }
     .dd { position: relative; display: flex; align-items: center; }
     .dd .sub { display: none; position: absolute; top: 100%; left: -14px; padding-top: 12px; z-index: 20; }
     .dd .subin { background: #FFFFFF; border: 1px solid #EEE4ED; border-radius: 14px; padding: 10px 0; min-width: 250px; box-shadow: 0 6px 20px rgba(42,33,48,.08); }
@@ -63,8 +72,14 @@
 <div id="wisdom" style="max-width: 1080px; margin: 0 auto; padding: 0 32px 120px;">
 <div style="font-size: 12px; letter-spacing: .12em; color: #613767; margin-bottom: 18px;">ALL WISDOM</div>
 <p style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.7; margin: 0 0 6px;">知恵を探す</p>
-<p style="font-size: 12.5px; line-height: 1.8; color: #948A93; margin: 0 0 28px;">道具・テンプレート・データなど、使うための知恵そのもの。</p>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0 0 28px;">道具・テンプレート・データなど、使うための知恵そのもの。</p>
+<a class="newstrip" href="language-tools.html">
+<span style="font-size: 12px; letter-spacing: .12em; color: #613767;">新着</span>
+<span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 14px;">ロシア語 学習ツール</span>
+<span class="status st-pilot">無料・試作版</span>
+<span style="font-size: 12px; color: #6B5F6C; margin-left: auto;">{{new_strip_label}}</span>
+</a>
+<div class="cgrid">
 <a class="card" href="books.html">
 <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px;">出版・書籍</div>
 <p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0 0 14px;">これまでに発行した書籍のご紹介です。</p>
@@ -74,23 +89,32 @@
 <img alt="AI Governance for User Organizations" src="../assets/ai_governance_front_cover.jpg" style="width: 100%; height: auto; border-radius: 4px; display: block;"/>
 </div>
 </a>
-<div class="card">
-<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px;">QMS／業務標準化ツール</div>
-<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">品質マネジメントや業務標準化のためのツール・テンプレート。</p>
-</div>
-<div class="card">
-<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px;">スキル／AI教育データ</div>
-<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">AI活用を前提としたスキルや教育データの共有。</p>
-</div>
-<div class="card">
-<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px;">製薬業界バリデーションツール</div>
-<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">説明責任が求められる製薬業界のためのバリデーション関連ツール。</p>
-</div>
-<div class="card">
+<a class="card" href="language-tools.html">
 <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px;">言語学習ツール</div>
 <p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">語学学習に役立つツールや資料の共有。</p>
+</a>
+<div class="card-off">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px;">
+<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; color: #6B5F6C;">QMS／業務標準化ツール</div>
+<span class="status st-coming">準備中</span>
+</div>
+<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">品質マネジメントや業務標準化のためのツール・テンプレート。</p>
+</div>
+<div class="card-off">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px;">
+<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; color: #6B5F6C;">スキル／AI教育データ</div>
+<span class="status st-coming">準備中</span>
+</div>
+<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">AI活用を前提としたスキルや教育データの共有。</p>
+</div>
+<div class="card-off">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px;">
+<div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 15px; color: #6B5F6C;">製薬業界バリデーションツール</div>
+<span class="status st-coming">準備中</span>
+</div>
+<p style="font-size: 12.5px; line-height: 1.8; color: #6B5F6C; margin: 0;">説明責任が求められる製薬業界のためのバリデーション関連ツール。</p>
 </div>
 </div>
-<p style="font-size: 12.5px; line-height: 1.9; color: #948A93; margin: 32px 0 0;">各カテゴリの内容は、これから少しずつ公開していきます。</p>
+<p style="font-size: 12.5px; line-height: 1.9; color: #6B5F6C; margin: 32px 0 0;">各カテゴリの内容は、これから少しずつ公開していきます。</p>
 </div>
 {{footer}}

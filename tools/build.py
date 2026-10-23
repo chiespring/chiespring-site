@@ -11,7 +11,21 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CRLF = "\r\n"
 LANGS = {"en": "", "ja": "ja/", "ru": "ru/"}
 SLUGS = ["index", "books", "concept", "contact", "experience"]
-PAGES_EXTRA = []  # new category pages are added here (step 2)
+PAGES_EXTRA = ["language-tools"]  # category pages
+# "New" strip on the home page: date of the day the Russian tools went public (edit on go-public day)
+NEW_STRIP_DATE = (2026, 10, 24)
+NEW_STRIP_LABEL = {
+    "ja": "%d年%d月%d日に追加",
+    "en": "Added %d %s %d",
+    "ru": "Добавлено: %02d.%02d.%d",
+}
+MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+def new_strip_label(lang):
+    y, m, d = NEW_STRIP_DATE
+    if lang == "ja": return NEW_STRIP_LABEL["ja"] % (y, m, d)
+    if lang == "en": return NEW_STRIP_LABEL["en"] % (d, MONTHS_EN[m - 1], y)
+    return NEW_STRIP_LABEL["ru"] % (d, m, y)
 
 def rd(p): return open(os.path.join(ROOT, p), encoding="utf-8", newline="").read()
 
@@ -33,7 +47,7 @@ def build_page(lang, slug):
             out.append(part)
         else:
             out.append(l)
-    text = CRLF.join(out)
+    text = CRLF.join(out).replace("{{new_strip_label}}", new_strip_label(lang))
     assert "{{" not in text, f"unresolved placeholder in {lang}/{slug}"
     return text
 
@@ -52,7 +66,7 @@ def main():
             else:
                 open(path, "w", encoding="utf-8", newline="").write(text)
     if check:
-        print("all 15 pages identical to the build" if not bad else f"{bad} page(s) differ")
+        print(("all %d pages identical to the build" % (3 * (len(SLUGS) + len(PAGES_EXTRA)))) if not bad else f"{bad} page(s) differ")
         sys.exit(1 if bad else 0)
     print("built")
 
